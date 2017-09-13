@@ -28,3 +28,18 @@ end
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+
+
+assignment_post = Post.find_or_create_by!(
+    title: 'New post title for seeding assignment',
+    body:  'New post body for seeding assignment'
+)
+
+puts 'Created unique post if it didn\'t exist'
+
+Comment.find_or_create_by!(
+    post: assignment_post,
+    body: 'New comment body for seeding assignment'
+)
+
+puts 'Created unique comment if it didn\'t exist'
