@@ -18,6 +18,9 @@ group :development do
   # Use sqlite3 as the development database for Active Record
   gem 'sqlite3'
   gem 'pry-rails'
+
+  gem "better_errors"
+  gem "binding_of_caller"
 end
 
 group :development, :test do
