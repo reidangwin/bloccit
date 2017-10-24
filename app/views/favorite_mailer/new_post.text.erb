@@ -1,0 +1,6 @@
+You've favorited and subscribed to "<%= @post.title %>"
+<%= "=" * (@post.title.length + 12) %>
+
+You will now receive email notifications whenever users comment on this post.
+
+Visit online at: <%= topic_post_url(@post.topic, @post) %>
