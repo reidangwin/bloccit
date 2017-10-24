@@ -76,6 +76,12 @@ RSpec.describe Post, type: :model do
       end
 
     end
-
   end
+
+  describe "post creation" do
+    it "automatically creates a vote for poster" do
+      expect(post.votes.where(user_id: user.id).count).to eq(1)
+    end
+  end
+
 end
