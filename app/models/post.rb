@@ -5,8 +5,6 @@ class Post < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  after_create :new_post
-
   default_scope { order('rank DESC') }
 
   validates :title, length: { minimum: 5 }, presence: true
