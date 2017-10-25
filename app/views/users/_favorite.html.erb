@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to favorite.post.title, [favorite.post.topic, favorite.post] %></td>
+  <td><%= image_tag favorite.post.user.avatar_url(20) %></td>
+  <td><%= favorite.post.votes.count %></td>
+  <td><%= favorite.post.comments.count %></td>
+</tr>

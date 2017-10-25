@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-8">
     <div class="media">
-      <br />
+      <br/>
       <% avatar_url = @user.avatar_url(128) %>
       <% if avatar_url %>
           <div class="media-left">
@@ -11,6 +11,7 @@
       <div class="media-body">
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
+
           <%= pluralize(@user.posts.count, 'post') %>,
           <%= pluralize(@user.comments.count, 'comment') %>
         </small>
@@ -19,8 +20,37 @@
   </div>
 </div>
 
-<h2>Posts</h2>
-<%= render @user.posts %>
+<% if has_posts(@user) %>
+    <h2>Posts</h2>
+    <%= render @user.posts %>
+<% else %>
+    <p><%= @user.name %> has not submitted any posts yet.</p>
+<% end %>
 
-<h2>Comments</h2>
-<%= render @user.comments %>
+<% if has_comments(@user) %>
+    <h2>Comments</h2>
+    <%= render @user.comments %>
+<% else %>
+    <p><%= @user.name %> has not submitted any comments yet.</p>
+<% end %>
+
+<h2>Posts Favorited</h2>
+
+<% if @user.favorites.any? %>
+    <table class="table-striped" width="600px">
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th></th>
+        <th>Votes</th>
+        <th>Comments</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render :partial => 'users/favorite', :collection => @user.favorites %>
+      </tbody>
+    </table>
+<% else %>
+    <p><%= @user.name %> has not favorited any posts yet.</p>
+<% end %>
+
